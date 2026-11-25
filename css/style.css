@@ -323,6 +323,21 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 .size-options input:focus-visible + span { outline: 3px solid var(--champanhe); outline-offset: 2px; }
 .size-options label:hover span { border-color: var(--rose); }
 
+/* Sabores (chips) */
+.flavor-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.flavor-chips label { position: relative; cursor: pointer; }
+.flavor-chips input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.flavor-chips span {
+  display: inline-block; padding: 9px 16px; border-radius: 999px;
+  border: 1.5px solid var(--linha); background: var(--creme);
+  font-size: .92rem; transition: all .2s;
+}
+.flavor-chips label:hover span { border-color: var(--rose); }
+.flavor-chips input:checked + span { border-color: var(--rose); background: var(--blush); color: var(--rose-hover); box-shadow: inset 0 0 0 1px var(--rose); }
+.flavor-chips input:focus-visible + span { outline: 3px solid var(--champanhe); outline-offset: 2px; }
+.size-options span small { font-size: .78rem; color: var(--cacau-suave); line-height: 1.2; }
+
+
 /* ---------- Sobremesas ---------- */
 .dessert-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: clamp(32px, 5vw, 56px); }
 .dessert-gallery figure { margin: 0; border-radius: 26px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; }
@@ -480,6 +495,8 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 .site-footer p { margin: 4px 0; font-size: .92rem; color: var(--cacau-suave); }
 .footer-links { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin: 10px 0 14px; }
 .footer-links a { color: var(--rose-forte); text-underline-offset: 4px; }
+.footer-city { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px !important; color: var(--rose-forte) !important; letter-spacing: .08em; }
+.footer-city svg { width: 18px; height: 18px; }
 
 /* ---------- WhatsApp flutuante ---------- */
 .wa-float {

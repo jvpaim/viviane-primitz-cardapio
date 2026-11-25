@@ -88,20 +88,24 @@
      Cada card tem data-product="Chocotone tradicional" e inputs com
      data-price. O botão de pedido é atualizado com o tamanho escolhido. */
   document.querySelectorAll("[data-product]").forEach((card) => {
-    const inputs = card.querySelectorAll('input[type="radio"][data-price]');
+    const inputs = card.querySelectorAll('input[type="radio"]');
     const priceEl = card.querySelector("[data-price-value]");
     const button = card.querySelector("[data-order]");
-    if (!inputs.length || !button) return;
+    if (!card.querySelector("input[data-price]") || !button) return;
 
     const article = card.dataset.article || "um";
     const update = () => {
-      const checked = card.querySelector('input[type="radio"]:checked');
+      const checked = card.querySelector('input[type="radio"][data-price]:checked');
       if (!checked) return;
+      const flavor = card.querySelector("input[data-flavor-option]:checked");
       const price = Number(checked.dataset.price);
       const size = checked.value; // ex.: "pequeno"
+      const weight = checked.dataset.weight ? ` de ${checked.dataset.weight}` : ""; // ex.: " de 130 g"
+      const flavorText = flavor ? ` sabor ${flavor.value}` : ""; // ex.: " sabor Kit Kat"
+      const item = `${card.dataset.product} ${size}${weight}${flavorText}`;
       if (priceEl) priceEl.textContent = brl(price);
-      setWa(button, `Olá! Quero ${article} ${card.dataset.product} ${size} (${brl(price)}). 😊`);
-      button.setAttribute("aria-label", `Pedir ${card.dataset.product} ${size} pelo WhatsApp`);
+      setWa(button, `Olá! Quero ${article} ${item} (${brl(price)}). 😊`);
+      button.setAttribute("aria-label", `Pedir ${item} pelo WhatsApp`);
     };
     inputs.forEach((input) => input.addEventListener("change", update));
     update();
