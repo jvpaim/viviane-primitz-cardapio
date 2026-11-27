@@ -23,26 +23,3 @@ Site estático (HTML, CSS e JavaScript puro, sem dependências) com o cardápio 
 ├── assets/og-image.jpg  # imagem de compartilhamento (WhatsApp, Instagram)
 └── vercel.json          # URLs limpas e cache dos arquivos estáticos
 ```
-
-## Como editar
-
-- **Número do WhatsApp / Pix:** `CONFIG` no topo de `js/main.js`. Os links `href` nos HTMLs são apenas reserva (caso o JS não carregue); procure por `5588996527350` para trocar em todos.
-- **Preços com tamanho (chocotones):** atributo `data-price` de cada opção e o texto `R$` ao lado, em `chocotones.html`.
-- **Preços dos alfajores:** `data-price` de cada `<li class="flavor-row">` e o texto do cabeçalho do grupo em `alfajores.html`.
-- **Mensagens do WhatsApp:** atributo `data-wa` de cada botão.
-- **Cores e fontes:** variáveis no início de `css/style.css`.
-
-## Rodar localmente
-
-```bash
-python3 -m http.server 8000
-# abra http://localhost:8000
-```
-
-## Publicar na Vercel
-
-1. Em vercel.com, clique em **Add New → Project** e importe este repositório.
-2. Framework Preset: **Other**. Não há comando de build; o diretório de saída é a raiz.
-3. Clique em **Deploy**.
-
-Com `cleanUrls` ativo, as páginas também abrem sem `.html` (ex.: `/chocotones`).
